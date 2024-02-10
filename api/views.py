@@ -17,8 +17,8 @@ class ChatroomView(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['post'])
     def send_message(self, request, pk=None):
-        chatroom = self.get_object()
-        serializer = MessageSerializer(data=request.data)
+        serializer = MessageSerializer(data=request.data, 
+                                       context=self.get_serializer_context())
         serializer.is_valid(raise_exception=True)
         serializer.save()
         headers = self.get_success_headers(serializer.data)

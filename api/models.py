@@ -18,6 +18,6 @@ class Chatroom(models.Model):
 class Message(models.Model):
     room_id = models.ForeignKey(Chatroom, on_delete=models.CASCADE)
     username = models.CharField(max_length=255)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
-    attachment_url = models.URLField()
+    attachment_url = models.URLField(null=True)
