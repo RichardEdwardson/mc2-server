@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+MEDIA_ROOT = '/Users/richard/Documents/mc2/mc2-server/file_upload/'
+MEDIA_URL = '/classroom_asset/'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

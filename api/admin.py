@@ -1,5 +1,22 @@
 from django.contrib import admin
-from .models import Classroom
+from django.contrib.auth.models import User
+from .models import Classroom, Asset, Chatroom
 
-# Register your models here.
-admin.site.register(Classroom)
+
+admin.site.site_header = 'MC² administration'
+
+
+class AssetInline(admin.StackedInline):
+    model = Asset
+
+
+class ChatroomInline(admin.TabularInline):
+    model = Chatroom
+
+
+@admin.register(Classroom)
+class ClassroomAdmin(admin.ModelAdmin):
+    inlines = [
+        AssetInline,
+        ChatroomInline,
+    ]

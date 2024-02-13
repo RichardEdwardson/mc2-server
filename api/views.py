@@ -2,14 +2,18 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Classroom, Chatroom, Message
-from .serializers import ClassroomSerializer, ChatroomSerializer, MessageSerializer
+from .models import Classroom, Chatroom, Asset
+from .serializers import ClassroomSerializer, ChatroomSerializer, MessageSerializer, AssetSerializer
 
 # Create your views here.
 class ClassroomView(viewsets.ModelViewSet):
     queryset = Classroom.objects.all()
     serializer_class = ClassroomSerializer
-    filterset_fields = ['name']
+    filterset_fields = ['year', 'term']
+
+class ClassroomAssetView(viewsets.ModelViewSet):
+    queryset = Asset.objects.all()
+    serializer_class = AssetSerializer
 
 class ChatroomView(viewsets.ModelViewSet):
     queryset = Chatroom.objects.all()
